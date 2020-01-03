@@ -9,7 +9,7 @@ var validator = function (form) {
 	var emailTwo = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@$/;
 	var emailThree = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)$/;
 	var emailFour = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.$/;
-	var emailSix = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/;
+	var emailFive = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/;
 	var errorMess = [
 		'Незаполненное поле ввода',
 		'Введите Ваше реальное имя',
@@ -65,18 +65,25 @@ var validator = function (form) {
 				else if (name.test(formVal.name) == false) error = errorMess[1];
 			},
 			'email': function () {
-				if (formVal.email.length === 0) {
-					error = errorMess[0];
-				} else if (emailSix.test(formVal.email) === false) {
-					if (emailFour.test(formVal.email) === false) {
-						if (emailThree.test(formVal.email) === false) {
-							if (emailTwo.test(formVal.email) === false) {
-								if (emailOne.test(formVal.email) === false) {
-									error = errorEmail[1];
-								} else error = errorEmail[2];
-							} else error = errorEmail[3];
-						} else error = errorEmail[4];
-					} else error = errorEmail[4];
+				switch (true) {
+					case formVal.email.length === 0:
+						error = errorMess[0];
+						break;
+					case emailFive.test(formVal.email):
+						break;
+					case emailFour.test(formVal.email):
+					case emailThree.test(formVal.email):
+						error = errorEmail[4];
+						break;
+					case emailTwo.test(formVal.email):
+						error = errorEmail[3];
+						break;
+					case emailOne.test(formVal.email):
+						error = errorEmail[2];
+						break;
+					default:
+						error = errorEmail[1];
+						break;
 				}
 			},
 			'phone': function () {
