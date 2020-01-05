@@ -26,8 +26,8 @@ var validator = function (form) {
 	(function init() {
 		var style = document.createElement('style');
 		style.textContent = `
-			.error {max-width: 260px; width: max-content; display: block; font-size: 13px; line-height: 15px; color: #dc3545; position: absolute; left: 0; top: calc(100% + 8px); z-index: 100; padding: 6px 10px 7px; -webkit-border-radius: 1px; border-radius: 2px; background-color: #f8d7da; border-color: #f5c6cb;}
-			.error:before {width: 0; height: 0; content: ''; position: absolute; left: 15px; top: -7px; border-right: 8px solid transparent; border-left: 8px solid transparent; border-bottom: 8px solid #d99;}
+			.error {max-width: 260px; width: max-content; display: block; font-size: 13px; line-height: 15px; color: #dc3545; position: absolute; left: 0; top: calc(100% + 8px); z-index: 100; padding: 6px 10px 7px; -webkit-border-radius: 1px; border-radius: 4px; background-color: #f8d7da; border-color: #f5c6cb;}
+			.error:before {width: 0; height: 0; content: ''; position: absolute; left: 15px; top: -7px; border-right: 8px solid transparent; border-left: 8px solid transparent; border-bottom: 8px solid #f8d7da;}
 			.form-control_error {border: 1px solid #dc3545;}
 			.box-error {position: relative; display: inline-block;}
 		`;
