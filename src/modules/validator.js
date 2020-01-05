@@ -103,7 +103,8 @@ var validator = function (form) {
 	}
 
 	[].forEach.call(elements, function (element) {
-		if (element.tagName.toLowerCase() === 'input' && element !== btn && element.type !== 'radio' && element.type !== 'checkbox') {
+		if (element.tagName.toLowerCase() === 'input' && element !== btn && 
+		(element.name === 'name' || element.name === 'email' || element.name === 'phone' || element.name === 'text')) {
 			var boxElem = document.createElement('div');
 			boxElem.innerHTML = element.outerHTML;
 			boxElem.className = 'box-error';
